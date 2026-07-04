@@ -3,7 +3,9 @@
 //  Edite apenas as partes marcadas com: ✏️ EDITE AQUI
 // ============================================================
 
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+  require("dotenv").config();
+}
 const express = require("express");
 const axios = require("axios");
 

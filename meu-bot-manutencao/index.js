@@ -201,6 +201,26 @@ async function notificarAtendente(telefoneCliente, ultimaMensagem) {
   await enviarMensagem(numeroAtendente, aviso);
 }
 
+// ==========================================================
+//  ROTA DE POLÍTICA DE PRIVACIDADE
+// ==========================================================
+app.get('/privacidade', (req, res) => {
+  res.send(`
+    <html>
+      <head><title>Política de Privacidade - Repara+</title></head>
+      <body style="font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6;">
+        <h1>Política de Privacidade - Repara+</h1>
+        <p>Última atualização: 2026</p>
+        <p>O Repara+ utiliza o número de WhatsApp fornecido pelo usuário exclusivamente para responder solicitações de atendimento e orçamento sobre serviços de manutenção de eletrodomésticos.</p>
+        <p>Não compartilhamos, vendemos ou repassamos os dados de contato a terceiros.</p>
+        <p>As mensagens trocadas podem ser processadas por serviços de inteligência artificial (Google Gemini) apenas para gerar respostas automáticas, sem fins de treinamento de terceiros com dados pessoais.</p>
+        <p>Para solicitar a exclusão dos seus dados, entre em contato pelo próprio WhatsApp e peça para encerrar o atendimento.</p>
+        <p>Dúvidas: entre em contato pelo WhatsApp (71) 99386-6117.</p>
+      </body>
+    </html>
+  `);
+});
+
 // ============================================================
 //  INICIAR SERVIDOR
 // ============================================================

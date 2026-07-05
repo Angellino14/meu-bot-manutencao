@@ -207,7 +207,7 @@ async function notificarAtendente(telefoneCliente, ultimaMensagem) {
 app.get('/privacidade', (req, res) => {
   res.send(`
     <html>
-      <head><title>Política de Privacidade - Repara+</title></head>
+      <head><title>Política de Privacidade - GISELE LINDA</title></head>
       <body style="font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6;">
         <h1>Política de Privacidade - Repara+</h1>
         <p>Última atualização: 2026</p>

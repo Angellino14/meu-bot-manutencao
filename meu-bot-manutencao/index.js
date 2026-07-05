@@ -135,28 +135,31 @@ app.post("/webhook", async (req, res) => {
 });
 
 // ============================================================
-//  FUNÇÃO: Chamar a IA (Claude da Anthropic)
+//  FUNÇÃO: Chamar a IA (Gemini do Google)
 // ============================================================
 async function gerarRespostaIA(historico, telefone) {
   try {
+    const contents = historico.map((msg) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
+
     const response = await axios.post(
-      "https://api.anthropic.com/v1/messages",
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
-        model: "claude-sonnet-4-6",
-        max_tokens: 500,
-        system: INFO_EMPRESA,
-        messages: historico,
+        contents: contents,
+        systemInstruction: {
+          parts: [{ text: INFO_EMPRESA }],
+        },
       },
       {
         headers: {
-          "x-api-key": process.env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
       }
     );
 
-    return response.data.content[0].text;
+    return response.data.candidates[0].content.parts[0].text;
   } catch (error) {
     console.error("❌ Erro na IA:", error.response?.data || error.message);
     return "Desculpe, tive um problema técnico. Por favor, tente novamente em instantes! 😊";

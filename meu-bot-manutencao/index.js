@@ -1,5 +1,5 @@
 // ============================================================
-//  BOT DE MANUTENÇÃO — WhatsApp + IA (Claude)
+//  BOT DE MANUTENÇÃO — WhatsApp + IA (Gemini)
 //  Edite apenas as partes marcadas com: ✏️ EDITE AQUI
 // ============================================================
 
